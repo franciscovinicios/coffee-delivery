@@ -2,11 +2,30 @@
 
 import { Trash } from "phosphor-react";
 import { ButtonsUpdateCart } from "../../../../../components/ButtonsUpdateCart";
+import { CartItem } from "../../../../../context/CardContext";
+import { useCart } from "../../../../../hooks/UseCart";
 import { Border, ButtonsContainer, DescriptionItem, ItemCartContainer, ItemCartContent, PriceItem, RemoveProductButton, TextItem } from "./styles";
 
+interface CoffeeCartCardProps {
+  coffee: CartItem;
+}
+
+export function ItemCart({ coffee }: CoffeeCartCardProps) {
+
+  const { removeProductCart, changeCartItemQuantity,  } = useCart();
 
 
-export function ItemCart() {
+  function handleRemoveItemCart() {
+    removeProductCart(coffee.id)
+  }
+
+  function incrementtAmount() {
+    changeCartItemQuantity(coffee, "increment")
+  }
+
+  function decrementAmount() {
+    changeCartItemQuantity(coffee, "decrement")
+  }
 
   return (
     <ItemCartContainer>
@@ -24,8 +43,11 @@ export function ItemCart() {
 
           <ButtonsContainer>
             <ButtonsUpdateCart
+              incrementAmount={incrementtAmount}
+              decrementAmount={decrementAmount}
+              amount={coffee.amount}
             />
-            <RemoveProductButton type="button">
+            <RemoveProductButton type="button" onClick={handleRemoveItemCart}>
               <Trash size={14} weight="regular" />
               <span>Remover</span>
             </RemoveProductButton>

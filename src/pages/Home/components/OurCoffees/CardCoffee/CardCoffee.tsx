@@ -1,6 +1,7 @@
-import {ShoppingCartSimple } from "phosphor-react";
+import { ShoppingCartSimple } from "phosphor-react";
 import { useState } from "react";
 import { ButtonsUpdateCart } from "../../../../../components/ButtonsUpdateCart";
+import { useCart } from "../../../../../hooks/UseCart";
 import { formatMoney } from "../../../../../utils/formatMoney";
 import {
   AddItemCartContainer, AddToCart, CoffeItem
@@ -19,10 +20,40 @@ export interface CoffeItem {
 interface CardCoffeProps {
   coffe: CoffeItem
 }
+
+
 export function CardCoffee({ coffe }: CardCoffeProps) {
-  
+
+  const { addProduct } = useCart();
+  const [quantity, setAmount] = useState(1)
+
+
+  function incrementAmount() {
+    const quantidade = quantity + 1
+    setAmount(quantidade)
+  }
+
+  function decrementAmount() {
+    const quantidade = quantity - 1
+    setAmount(quantidade)
+  }
+
+  function handleAddCart() {
+    const newCoffe = {
+      ...coffe,
+      amount: quantity
+    }
+    addProduct(newCoffe)
+  }
+
+  function formatMoney(value: number) {
+    return value.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+    });
+  }
 
   const formattedPrice = formatMoney(coffe.price);
+
 
   return (
     <CoffeItem>
@@ -56,10 +87,14 @@ export function CardCoffee({ coffe }: CardCoffeProps) {
         </Price>
 
         <AddToCart>
-          <ButtonsUpdateCart/>
-          
-          <IconAddToCart>
-            <ShoppingCartSimple size={17} weight="fill"  />
+          <ButtonsUpdateCart
+            decrementAmount={decrementAmount}
+            incrementAmount={incrementAmount}
+            amount={quantity}
+          />
+
+          <IconAddToCart onClick={handleAddCart}>
+            <ShoppingCartSimple size={17} weight="fill" />
           </IconAddToCart>
         </AddToCart>
       </AddItemCartContainer>

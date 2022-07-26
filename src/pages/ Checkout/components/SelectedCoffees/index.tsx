@@ -1,20 +1,32 @@
+import { useCart } from "../../../../hooks/UseCart";
 import { formatMoney } from "../../../../utils/formatMoney";
 import { ItemCart } from "./ItemCart/ItemCart";
 import { ButtonSubmit, CartTotalPrice, ResumeCart, SelectedCoffeesContainer, ServicesResume, TextService, TextTitleSection } from "./styles";
 
 
+const DELIVERY_PRICE = 3.5;
 
 export function SelectedCoffees() {
+  const { cart, cartItemsTotal } = useCart();
+
+  const cartTotal = DELIVERY_PRICE + cartItemsTotal;
+
+  const formattedItemsTotal = formatMoney(cartItemsTotal);
+  const formattedCartTotal = formatMoney(cartTotal);
+  const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE);
+
   return (
     <SelectedCoffeesContainer>
       <TextTitleSection>
         Cafés selecionados
       </TextTitleSection>
-
       <ResumeCart>
-
-        <ItemCart />
-        <ItemCart />
+        {cart.map(coffe => (
+          <ItemCart
+            key={coffe.id}
+            coffee={coffe}
+          />
+        ))}
 
 
         <CartTotalPrice>
@@ -24,7 +36,7 @@ export function SelectedCoffees() {
             </TextService>
 
             <TextService>
-              R$ 22
+              R$ {formattedItemsTotal}
             </TextService>
           </ServicesResume>
 
@@ -34,7 +46,7 @@ export function SelectedCoffees() {
             </TextService>
 
             <TextService>
-              R$ 22
+              R$ {formattedDeliveryPrice}
             </TextService>
           </ServicesResume>
 
@@ -44,12 +56,12 @@ export function SelectedCoffees() {
             </TextService>
 
             <TextService className="text-bold">
-              R$ 22
+              R$ {formattedCartTotal}
             </TextService>
           </ServicesResume>
         </CartTotalPrice>
 
-        <ButtonSubmit type="submit" >
+        <ButtonSubmit type="submit" disabled={cart.length <= 0}>
           confirmar pedido
         </ButtonSubmit>
       </ResumeCart>
