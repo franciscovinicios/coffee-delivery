@@ -1,11 +1,11 @@
 import { Intro } from "./components/Intro";
-import { OurCoffes } from "./components/OurCoffee";
+import { OurCoffees } from "./components/OurCoffees";
 
 export function Home() {
   return (
     <>
       <Intro/>
-      <OurCoffes/>
+      <OurCoffees/>
     </>
   )
 }
