@@ -22,7 +22,7 @@ export const DescriptionItem = styled.div`
   > div.text {
     display: flex;
     align-items: center;
-    gap: 4.563rem
+    gap: 11rem;
   }
   
 `
