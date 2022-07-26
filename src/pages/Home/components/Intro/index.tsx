@@ -2,7 +2,7 @@ import { CoffeeImg, IntroContainer, Specialties, Subtitle, Title } from "./style
 
 import IntroCoffeeImg from '../../../../assets/introduction.svg'
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { SpecialtyItem } from "./SpecialtyItem";
+import { SpecialtyItem } from "./SpecialtyItem/SpecialtyItem";
 
 export function Intro() {
   return (
