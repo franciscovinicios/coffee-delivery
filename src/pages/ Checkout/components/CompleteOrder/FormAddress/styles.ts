@@ -22,6 +22,26 @@ export const FormContent = styled.div`
   background-color: ${({ theme }) => theme.colors["base-card"]};
 `
 
+
+export const AddressFormContainer = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 12.5rem 17.25rem 3.75rem;
+  column-gap: 0.75rem;
+  row-gap: 1rem;
+  grid-auto-flow: dense;
+  .cep {
+    grid-column: span 3;
+    max-width: 12.5rem;
+  }
+  .street {
+    grid-column: span 3;
+  }
+  .complement {
+    grid-column: span 2;
+  }
+`;
+
 export const DescriptionForm = styled.div`
   display: flex;
   align-items: flex-start;
@@ -59,49 +79,10 @@ export const FormInputsAddress = styled.div`
   margin-top: 2rem;
   gap: 1rem;
 
-  input {
-    padding-left: 0.75rem ;
-    height: 2.625rem;
-    width: 12.5rem;
-    border: none;
-    background-color: ${({ theme }) => theme.colors["base-input"]};
-    border: 1px solid ${({ theme }) => theme.colors["base-button"]};
-    border-radius: 0.3rem;
 
-    &.street {
-      width: 100%;
-    }
-
-    &::placeholder {
-      margin-left: 0.75rem;
-      font-size: 0.875rem;
-      line-height: 1.125rem;
-      color: ${({ theme }) => theme.colors["base-label"]};;
-    }
-  }
 `;
 
 
-export const InputText = styled.input`
-
-  &.complement {
-    flex: 1;
-  }
-  &.city {
-    width: 17.25rem;
-  }
-  &.uf {
-    width: 3.75rem;
-  }
-`
-
-export const InputNumber = styled(InputText)`
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-`
 
 export const ContainerGroup = styled.div`
   display: flex;

@@ -14,7 +14,7 @@ export const TypeMethodInput = forwardRef<
 > (({ id, icon, label, ...props }, ref) => {
   return (
     <TypeMethodInputContainer>
-      <input id={id} type="radio" {...props} name="paymentMethod" ref={ref} />
+      <input id={id} type="radio" {...props} name="paymentMethod" ref={ref}  />
       <label htmlFor={id}>
         <TypeMethodContainer>
           {icon}

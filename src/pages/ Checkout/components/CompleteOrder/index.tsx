@@ -3,7 +3,6 @@ import { PaymentMethods } from "./PaymentMethods";
 import { CompleteOrderContainer } from "./styles";
 
 export function CompleteOrder() {
-
   return (
     <CompleteOrderContainer>
       <FormAddress />

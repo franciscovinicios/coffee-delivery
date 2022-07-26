@@ -1,9 +1,20 @@
 import { MapPinLine } from "phosphor-react";
-import { ContainerGroup, ContainerIcon, DescriptionForm, FormAddressContainer, FormContent, FormInputsAddress, InputNumber, InputText, TextContainer, TextTitle, TextTitleSection } from "./styles";
+import { AddressFormContainer, ContainerGroup, ContainerIcon, DescriptionForm, FormAddressContainer, FormContent, FormInputsAddress, TextContainer, TextTitle, TextTitleSection } from "./styles";
+import { useFormContext } from "react-hook-form";
+import { Input } from "../../../../../components/Input";
 
-
+interface ErrorsType {
+  errors: {
+    [key: string]: {
+      message: string;
+    };
+  };
+}
 
 export function FormAddress() {
+  const { register, formState } = useFormContext();
+  const { errors } = formState as unknown as ErrorsType;
+  
   return (
     <FormAddressContainer>
       <TextTitleSection>
@@ -27,21 +38,45 @@ export function FormAddress() {
           </TextContainer>
         </DescriptionForm>
 
-        <FormInputsAddress>
-          <InputNumber type="number" placeholder="CEP" />
-          <InputText placeholder="Rua" className="street" />
-
-          <ContainerGroup>
-            <InputText type="number" placeholder="Número" />
-            <InputText placeholder="Complemento" className="complement" />
-          </ContainerGroup>
-
-          <ContainerGroup>
-            <InputText placeholder="Bairro" />
-            <InputText placeholder="Cidade" className="city" />
-            <InputText placeholder="UF" className="uf" />
-          </ContainerGroup>
-        </FormInputsAddress>
+        <AddressFormContainer>
+      <Input
+        placeholder="CEP"
+        type="number"
+        className="cep"
+        {...register("cep")}
+        error={errors.cep?.message}
+      />
+      <Input
+        placeholder="Rua"
+        className="street"
+        {...register("street")}
+        error={errors.street?.message}
+      />
+      <Input
+        type="number"
+        placeholder="Número"
+        {...register("number")}
+        error={errors.number?.message}
+      />
+      <Input
+        placeholder="Complemento"
+        className="complement"
+        {...register("complement")}
+        error={errors.complement?.message}
+        rightText="Opcional"
+      />
+      <Input
+        placeholder="Bairro"
+        {...register("district")}
+        error={errors.district?.message}
+      />
+      <Input
+        placeholder="Cidade"
+        {...register("city")}
+        error={errors.city?.message}
+      />
+      <Input placeholder="UF" {...register("uf")} error={errors.uf?.message} />
+    </AddressFormContainer>
       </FormContent>
     </FormAddressContainer>
   )

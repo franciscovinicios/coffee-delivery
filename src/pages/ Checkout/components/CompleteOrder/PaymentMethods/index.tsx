@@ -1,4 +1,5 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
+import { useFormContext } from "react-hook-form";
 import { ContainerIcon, DescriptionForm, TextContainer, TextTitle, PaymentMethodsContainer, PaymentTypes } from "./styles";
 import { TypeMethodInput } from "./TypeMethodInput/TypeMethodInput";
 
@@ -20,7 +21,7 @@ export const paymentMethods = {
 
 
 export function PaymentMethods() {
-  
+  const { register } = useFormContext();
 
   return (
     <PaymentMethodsContainer>
@@ -48,6 +49,7 @@ export function PaymentMethods() {
           icon={icon}
           label={label}
           value={key}
+          {...register("paymentMethod")}
         />
       ))}
 
