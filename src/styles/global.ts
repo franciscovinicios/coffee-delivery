@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 body {
-    background:${({ theme }) => theme.colors["brand-purple"]};
+    background:${({ theme }) => theme.colors["base-background"]};
     color: ${({ theme }) => theme.colors["base-text"]};
     -webkit-font-smoothing: antialiased;
   };
