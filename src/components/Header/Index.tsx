@@ -1,15 +1,8 @@
-import { MapPin, ShoppingCart } from "@phosphor-icons/react";
+import { MapPin } from "@phosphor-icons/react";
 import LogoImg from "../../assets/logo.svg";
 
-import {
-  Actions,
-  Cart,
-  Container,
-  Content,
-  Locale,
-  Logo,
-  Title,
-} from "./styles";
+import { Actions, Container, Content, Locale, Logo, Title } from "./styles";
+import { AddCart } from "../AddCart";
 
 export function Header() {
   return (
@@ -22,10 +15,7 @@ export function Header() {
             <MapPin size={20} weight="fill" />
             <Title>Porto Alegre, RS</Title>
           </Locale>
-
-          <Cart>
-            <ShoppingCart size={20} weight="fill" />
-          </Cart>
+          <AddCart color="yellow" />
         </Actions>
       </Content>
     </Container>

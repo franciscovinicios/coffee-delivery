@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   width: 100%;
-  margin-top: 5.75rem;
+  padding: 5.75rem 0;
 `;
 
 export const IntroContent = styled.div`

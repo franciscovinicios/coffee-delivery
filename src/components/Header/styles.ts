@@ -40,28 +40,3 @@ export const Title = styled.span`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.colors["brand-purple"]};
 `;
-
-export const Cart = styled.button`
-  display: flex;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors["brand-yellow-light"]};
-
-  padding: 0.5rem;
-  border: none;
-  border-radius: 6px;
-
-  cursor: pointer;
-
-  svg {
-    color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
-  }
-
-  transition: 0.4s;
-
-  &:hover {
-    svg {
-      color: ${({ theme }) => theme.colors["brand-yellow-light"]};
-    }
-    background-color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
-  }
-`;
