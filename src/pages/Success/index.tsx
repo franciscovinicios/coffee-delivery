@@ -13,8 +13,25 @@ import {
 } from "./styles";
 
 import DeliveryImg from "../../assets/Illustration.svg";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { OrderData } from "../Checkout";
+import { paymentMethods } from "../Checkout/CompleteOrder/PaymentMethods/PaymentMethods";
+
+interface LocationType {
+  state: OrderData;
+}
 
 export function Sucess() {
+  const navigate = useNavigate();
+  const { state } = useLocation() as unknown as LocationType;
+  useEffect(() => {
+    if (!state) {
+      navigate("/");
+    }
+  }, [navigate, state]);
+
+  if (!state) return <></>;
   return (
     <SucessContainer>
       <TextSucessDelivery>
@@ -32,8 +49,12 @@ export function Sucess() {
               <MapPin size={14} weight="fill" />
             </IconContainer>
             <Description>
-              Entrega em <span>Rua João Daniel Martinelli, 102</span> <br />
-              Farrapos - Porto Alegre, RS
+              Entrega em{" "}
+              <span>
+                {state.street},{state.number}
+              </span>{" "}
+              <br />
+              {state.district}- {state.city},{state.uf}
             </Description>
           </DetailItem>
           <DetailItem>
@@ -51,7 +72,7 @@ export function Sucess() {
             </IconContainer>
             <Description>
               Pagamento na entrega <br />
-              <span>Cartão de Crédito</span>
+              <span>{paymentMethods[state.paymentMethod].label}</span>
             </Description>
           </DetailItem>
         </OrderContent>

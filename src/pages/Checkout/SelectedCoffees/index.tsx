@@ -14,7 +14,7 @@ export function SelectedCoffees() {
 
         <CardTotalPrice />
 
-        <ButtonSubmit>Confirmar Pedido</ButtonSubmit>
+        <ButtonSubmit type="submit">Confirmar Pedido</ButtonSubmit>
       </ResumeCart>
     </SelecetedCoffeesContainer>
   );

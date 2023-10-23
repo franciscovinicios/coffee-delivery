@@ -2,22 +2,24 @@ import { Bank, CreditCard, CurrencyDollar, Money } from "@phosphor-icons/react";
 import { FormDescription } from "../../../../components/FormDescription";
 import { PaymentMethodsContainer, PaymentTypes } from "./styles";
 import { TypePayment } from "./TypePayment/TypePayment";
+import { useFormContext } from "react-hook-form";
 
+export const paymentMethods = {
+  credit: {
+    label: "Cartão de crédito",
+    icon: <CreditCard size={16} />,
+  },
+  debit: {
+    label: "Cartão de débito",
+    icon: <Bank size={16} />,
+  },
+  money: {
+    label: "Dinheiro",
+    icon: <Money size={16} />,
+  },
+};
 export function PaymentMethods() {
-  const paymentMethods = {
-    credit: {
-      label: "Cartão de crédito",
-      icon: <CreditCard size={16} />,
-    },
-    debit: {
-      label: "Cartão de débito",
-      icon: <Bank size={16} />,
-    },
-    money: {
-      label: "Dinheiro",
-      icon: <Money size={16} />,
-    },
-  };
+  const { register } = useFormContext();
   return (
     <PaymentMethodsContainer>
       <FormDescription
@@ -34,6 +36,7 @@ export function PaymentMethods() {
             icon={icon}
             label={label}
             value={key}
+            {...register("paymentMethod")}
           />
         ))}
       </PaymentTypes>
