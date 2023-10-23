@@ -26,4 +26,11 @@ export const ButtonSubmit = styled.button`
   padding: 12px 8px;
   border: transparent;
   border-radius: 6px;
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
+  }
 `;

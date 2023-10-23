@@ -6,7 +6,7 @@ export function Checkout() {
   return (
     <CheckoutContainer>
       <CompleteOrder />
-      <SelectedCoffees />
+      <SelectedCoffees /> 
     </CheckoutContainer>
   );
 }
