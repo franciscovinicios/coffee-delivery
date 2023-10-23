@@ -27,12 +27,13 @@ export const TagItem = styled.span`
   background-color: ${({ theme }) => theme.colors["brand-yellow-light"]};
   color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
 
-  font-size: 0.625em;
+  font-size: 0.625rem;
   font-weight: 700;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
 
-  padding: 0.25em 0.5em;
+  padding: 0.25rem 0.5rem;
+
   border-radius: 100px;
 `;
 export const Title = styled.p`
@@ -40,23 +41,23 @@ export const Title = styled.p`
 
   color: ${({ theme }) => theme.colors["base-subtitle"]};
 
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-family: "Baloo 2", sans-serif;
   font-weight: 700;
-  line-height: 1.625em;
+  line-height: 1.625rem;
   text-align: center;
 `;
 export const Subtitle = styled.span`
   margin-top: 0.5rem;
   color: ${({ theme }) => theme.colors["base-label"]};
-  font-size: 0.875em;
-  line-height: 1.1375em;
+  font-size: 0.875rem;
+  line-height: 1.1375rem;
   text-align: center;
 `;
 
 export const BuyContainer = styled.div`
   width: 100%;
-  margin-top: 2.0625em;
+  margin-top: 2.0625rem;
 
   display: flex;
   align-items: center;
@@ -66,15 +67,15 @@ export const BuyContainer = styled.div`
 export const PriceContainer = styled.div``;
 
 export const Money = styled.span`
-  font-size: 0.875em;
+  font-size: 0.875rem;
   font-family: "Roboto", sans-serif;
-  line-height: 1.1375em;
+  line-height: 1.1375rem;
 
   color: ${({ theme }) => theme.colors["base-text"]};
 `;
 
 export const PriceContent = styled.span`
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-family: "Baloo 2", sans-serif;
   font-weight: 800;
 
@@ -86,5 +87,5 @@ export const PriceContent = styled.span`
 export const ActionsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.25em;
+  gap: 0.25rem;
 `;

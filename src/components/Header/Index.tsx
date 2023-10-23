@@ -3,19 +3,24 @@ import LogoImg from "../../assets/logo.svg";
 
 import { Actions, Container, Content, Locale, Logo, Title } from "./styles";
 import { AddCart } from "../AddCart";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
   return (
     <Container>
       <Content>
-        <Logo src={LogoImg} />
+        <NavLink to={"/"}>
+          <Logo src={LogoImg} />
+        </NavLink>
 
         <Actions>
           <Locale>
             <MapPin size={20} weight="fill" />
             <Title>Porto Alegre, RS</Title>
           </Locale>
-          <AddCart color="yellow" />
+          <NavLink to={"/checkout"}>
+            <AddCart color="yellow" />
+          </NavLink>
         </Actions>
       </Content>
     </Container>

@@ -25,6 +25,6 @@ export const AmountText = styled.span`
   color: ${({ theme }) => theme.colors["base-title"]};
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  line-height: 1.3em;
+  line-height: 1.25rem;
   text-align: center;
 `;
