@@ -1,7 +1,6 @@
 import { FormAdress } from "./FormAdress/FormAdress";
-import { TitleSection } from "./FormAdress/styles";
 import { PaymentMethods } from "./PaymentMethods/PaymentMethods";
-import { CompleteOrderContainer } from "./styles";
+import { CompleteOrderContainer, TitleSection } from "./styles";
 
 export function CompleteOrder() {
   return (
