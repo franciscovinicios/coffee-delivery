@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { AddCart } from "../../../components/AddCart";
 import { ButtonsUpdateCart } from "../../../components/ButtonsUpdateCart/inde";
+import { useCart } from "../../../hooks/useCart";
 import {
   BuyContainer,
   Container,
@@ -29,19 +31,42 @@ interface CardCoffeeProps {
 }
 
 export function CardCoffe({ coffee }: CardCoffeeProps) {
+  const { addProduct } = useCart();
+  const [quantity, setAmount] = useState(1);
+
+  function incrementAmount() {
+    const quantidade = quantity + 1;
+    setAmount(quantidade);
+  }
+
+  function decrementAmount() {
+    const quantidade = quantity - 1;
+    setAmount(quantidade);
+  }
+
+  function handleAddCart() {
+    const newCoffe = {
+      ...coffee,
+      amount: quantity,
+    };
+    addProduct(newCoffe);
+  }
+
   function formatMoney(value: number) {
     return value.toLocaleString("pt-BR", {
       minimumFractionDigits: 2,
     });
   }
+
   const formattedPrice = formatMoney(coffee.price);
+
   return (
     <Container>
       <Content>
         <Image src={coffee.photo} />
         <TagsContent>
           {coffee.tags.map((item) => (
-            <TagItem>{item}</TagItem>
+            <TagItem key={item}>{item}</TagItem>
           ))}
         </TagsContent>
 
@@ -55,8 +80,12 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
           </PriceContainer>
 
           <ActionsContainer>
-            <ButtonsUpdateCart />
-            <AddCart color="purple" />
+            <ButtonsUpdateCart
+              decrementAmount={decrementAmount}
+              incrementAmount={incrementAmount}
+              amount={quantity}
+            />
+            <AddCart color="purple" onClick={handleAddCart} />
           </ActionsContainer>
         </BuyContainer>
       </Content>

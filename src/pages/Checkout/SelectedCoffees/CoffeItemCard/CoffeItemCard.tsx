@@ -22,7 +22,7 @@ export function CoffeItemCard() {
           <Details>
             <Title>Expresso Tradicional</Title>
             <Actions>
-              <ButtonsUpdateCart />
+              <ButtonsUpdateCart amount={2} />
               <RemoveCoffe>
                 <Trash size={16} />
                 <span>Remover</span>

@@ -12,8 +12,10 @@ import {
 } from "./styles";
 import { AddCart } from "../AddCart";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 
 export function Header() {
+  const { cart } = useCart();
   return (
     <Container>
       <Content>
@@ -28,8 +30,8 @@ export function Header() {
           </Locale>
           <NavLink to={"/checkout"}>
             <ButtonContainer>
-              <AddCart color="yellow"></AddCart>
-              <span>0</span>
+              <AddCart color="yellow" />
+              {cart.length > 0 && <span>{cart.length}</span>}
             </ButtonContainer>
           </NavLink>
         </Actions>

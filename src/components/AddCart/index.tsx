@@ -1,11 +1,11 @@
 import { ShoppingCart } from "@phosphor-icons/react";
 import { Container } from "./styles";
-interface AddcartProps {
+interface AddcartProps extends React.HTMLAttributes<HTMLButtonElement> {
   color: "yellow" | "purple";
 }
-export function AddCart({ color }: AddcartProps) {
+export function AddCart({ color, ...rest }: AddcartProps) {
   return (
-    <Container variant={color}>
+    <Container {...rest} variant={color}>
       <ShoppingCart size={20} weight="fill" />
     </Container>
   );

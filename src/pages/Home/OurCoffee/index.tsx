@@ -9,7 +9,7 @@ export function OurCoffe() {
 
       <OurCoffeesContent>
         {ourCoffee.map((coffee) => (
-          <CardCoffe coffee={coffee} />
+          <CardCoffe key={coffee.id} coffee={coffee} />
         ))}
       </OurCoffeesContent>
     </Container>
