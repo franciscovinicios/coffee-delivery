@@ -12,17 +12,39 @@ import {
   RemoveCoffe,
   Title,
 } from "./styles";
+import { useCart } from "../../../../hooks/useCart";
+export interface CoffeItem {
+  id: number;
+  photo: string;
+  tags: string[];
+  name: string;
+  description: string;
+  price: number;
+  amount: number;
+}
 
-export function CoffeItemCard() {
+interface CoffeItemCardProps {
+  coffee: CoffeItem;
+}
+export function CoffeItemCard({ coffee }: CoffeItemCardProps) {
+  const { changeCartItemQuantity } = useCart();
+
+  function incrementtAmount() {
+    changeCartItemQuantity(coffee, "increment");
+  }
+
   return (
     <CoffeeItemContainer>
       <CoffeeItemContent>
         <Infos>
-          <Image src="https://i.ibb.co/d23GwNK/expresso-tradicional.png" />
+          <Image src={coffee.photo} />
           <Details>
-            <Title>Expresso Tradicional</Title>
+            <Title>{coffee.name}</Title>
             <Actions>
-              <ButtonsUpdateCart amount={2} />
+              <ButtonsUpdateCart
+                incrementAmount={incrementtAmount}
+                amount={coffee.amount}
+              />
               <RemoveCoffe>
                 <Trash size={16} />
                 <span>Remover</span>
@@ -31,7 +53,7 @@ export function CoffeItemCard() {
           </Details>
         </Infos>
 
-        <Price>R$ 9,90</Price>
+        <Price>R$ {coffee.price}</Price>
       </CoffeeItemContent>
       <Divisor />
     </CoffeeItemContainer>
