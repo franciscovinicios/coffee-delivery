@@ -38,6 +38,7 @@ export const Actions = styled.div`
   gap: 0.5rem;
 `;
 export const RemoveCoffe = styled.button`
+  background-color: ${({ theme }) => theme.colors["base-button"]};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +47,12 @@ export const RemoveCoffe = styled.button`
   border: none;
   border-radius: 6px;
   padding: 0 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors["base-hover"]};
+  }
 
   svg {
     color: ${({ theme }) => theme.colors["brand-purple"]};
@@ -58,8 +65,6 @@ export const RemoveCoffe = styled.button`
 
     color: ${({ theme }) => theme.colors["base-text"]};
   }
-
-  background-color: ${({ theme }) => theme.colors["base-button"]};
 `;
 
 export const Price = styled.span`

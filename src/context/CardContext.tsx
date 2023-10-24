@@ -12,6 +12,7 @@ export interface CartItem extends CoffeItem {
 interface CartContextData {
   cart: CartItem[];
   addProduct: (product: CartItem) => void;
+  removeProductCart: (productId: number) => void;
   cartItemsTotal: number;
   changeCartItemQuantity: (
     product: CartItem,
@@ -48,6 +49,18 @@ export function CartProvider({ children }: CartProviderProps) {
     setCart(updateCart);
   };
 
+  const removeProductCart = (productId: number) => {
+    const updateCart = [...cart];
+    const productIndex = updateCart.findIndex((item) => item.id === productId);
+
+    if (productIndex >= 0) {
+      updateCart.splice(productIndex, 1);
+      setCart(updateCart);
+    } else {
+      throw Error();
+    }
+  };
+
   function changeCartItemQuantity(product: CartItem, type: string) {
     const updateCart = [...cart];
     const productExists = updateCart.find((item) => item.id === product.id);
@@ -78,6 +91,7 @@ export function CartProvider({ children }: CartProviderProps) {
       value={{
         cart,
         addProduct,
+        removeProductCart,
         cartItemsTotal,
         changeCartItemQuantity,
         cleanCart,
