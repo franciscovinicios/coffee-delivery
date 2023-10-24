@@ -33,6 +33,10 @@ export function CoffeItemCard({ coffee }: CoffeItemCardProps) {
     changeCartItemQuantity(coffee, "increment");
   }
 
+  function decrementAmount() {
+    changeCartItemQuantity(coffee, "decrement");
+  }
+
   return (
     <CoffeeItemContainer>
       <CoffeeItemContent>
@@ -44,6 +48,7 @@ export function CoffeItemCard({ coffee }: CoffeItemCardProps) {
               <ButtonsUpdateCart
                 incrementAmount={incrementtAmount}
                 amount={coffee.amount}
+                decrementAmount={decrementAmount}
               />
               <RemoveCoffe>
                 <Trash size={16} />
