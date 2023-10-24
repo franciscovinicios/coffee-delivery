@@ -58,7 +58,7 @@ export function CoffeItemCard({ coffee }: CoffeItemCardProps) {
           </Details>
         </Infos>
 
-        <Price>R$ {coffee.price}</Price>
+        <Price>R$ 9,90</Price>
       </CoffeeItemContent>
       <Divisor />
     </CoffeeItemContainer>
